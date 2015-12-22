@@ -1,0 +1,5 @@
+ERROR    Error occured while readConfig ... 
+
+ERROR    <type 'exceptions.AttributeError'>
+ERROR    ("'str' object has no attribute 'contain'",)
+ERROR    ------
