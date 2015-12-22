@@ -1,5 +1,12 @@
-ERROR    Error occured while readConfig ... 
-
-ERROR    <type 'exceptions.AttributeError'>
-ERROR    ("'str' object has no attribute 'contain'",)
+ERROR    Error occured while processHey ...
+ERROR    <class 'tweepy.error.TweepError'>
+ERROR    ([{u'message': u'Status is a duplicate.', u'code': 187}],)
+ERROR    ------
+ERROR    Error occured while processHey ...
+ERROR    <class 'tweepy.error.TweepError'>
+ERROR    ([{u'message': u'Status is a duplicate.', u'code': 187}],)
+ERROR    ------
+ERROR    Error occured while processHey ...
+ERROR    <class 'tweepy.error.TweepError'>
+ERROR    ([{u'message': u'Status is a duplicate.', u'code': 187}],)
 ERROR    ------
