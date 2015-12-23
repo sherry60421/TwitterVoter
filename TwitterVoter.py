@@ -65,6 +65,7 @@ class ILoveNikukyu(object):
         sys.stderr.write(u"已經寫死發推內容了, 只准你給我投黨首大人啊!!!\n")
         sys.stderr.write(u"請確認看過使用教學再用,我沒有多餘時間做太多例外處理QQ\n")
         sys.stderr.write(u"教學: https://sherry60421.gitbooks.io/voter/content/ \n")
+        sys.stderr.write(u"目前版本: v1.1 \n")
         sys.stderr.write("\n")
         sys.stderr.write("--------------------------------------------\n")
         sys.stderr.write("\n")
@@ -132,10 +133,13 @@ class ILoveNikukyu(object):
                 api.update_status(status=text)
                 pass_time = random.uniform(1, 10)
                 now = now + pass_time
-                sys.stderr.write(u'已於 %s 發twitter\n' % time.ctime(now))
+                sys.stderr.write(u'已於 %s 發出tweet\n' % time.ctime(now))
                 count = count + 1
                 time.sleep(pass_time)
             except Exception as inst:
+                if str(inst.args[0][0])=="{u'message': u'Status is a duplicate.', u'code': 187}":
+                    sys.stderr.write(u'重複tweet內容, 這次先跳過\n')
+                    continue
                 sys.stderr.write(u'發生一些錯誤, 請提供log檔\n')
                 self.logger.error('Error occured while processHey ...')
                 self.logger.error(type(inst))
