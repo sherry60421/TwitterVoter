@@ -57,30 +57,30 @@ class ILoveNikukyu(object):
         self.logger = logging.getLogger('')
 
     def initDescription(self):
-        print "Let's Joy~"
-        print "這支程式為避免被發現是機器人(我也不知道怎麼樣可以發現)"
-        print "所以發推的頻率不固定, 大概會在1~10秒之間"
-        print "請勿外流啊啊啊"
-        print "另外, 姐會寫code就是任性<(￣︶￣)>"
-        print "已經寫死發推內容了, 只准你給我投黨首大人啊!!!"
-        print "請確認看過使用教學再用,我沒有多餘時間做太多例外處理QQ"
-        print "教學: https://sherry60421.gitbooks.io/voter/content/ "
-        print ""
-        print "--------------------------------------------"
-        print ""
+        sys.stderr.write(u"Let's Joy~\n")
+        sys.stderr.write(u"這支程式為避免被發現是機器人(我也不知道怎麼樣可以發現)\n")
+        sys.stderr.write(u"所以發推的頻率不固定, 大概會在1~10秒之間\n")
+        sys.stderr.write(u"請勿外流啊啊啊\n")
+        sys.stderr.write(u"另外, 姐會寫code就是任性<(￣︶￣)>\n")
+        sys.stderr.write(u"已經寫死發推內容了, 只准你給我投黨首大人啊!!!\n")
+        sys.stderr.write(u"請確認看過使用教學再用,我沒有多餘時間做太多例外處理QQ\n")
+        sys.stderr.write(u"教學: https://sherry60421.gitbooks.io/voter/content/ \n")
+        sys.stderr.write("\n")
+        sys.stderr.write("--------------------------------------------\n")
+        sys.stderr.write("\n")
 
     def defineTimeUp(self):
         while True:
-            print("若要結束程式請輸入bye")
-            self.timeUp = raw_input("請輸入您要自動發推的時間(1~60 mins):")
+            sys.stderr.write(u"請輸入您要自動發推的時間(1~60 mins),若要結束程式請輸入bye:\n")
+            self.timeUp = raw_input("")
             if self.timeUp == 'bye':
                 exit()
             elif self.isInt(self.timeUp) is False:
-                print ('這不是數字!')
+                sys.stderr.write(u'這不是數字!\n')
             elif int(self.timeUp) > 60:
-                print ('不要給大於60的數字啊')
+                sys.stderr.write(u'不要給大於60的數字啊\n')
             elif int(self.timeUp) < 1:
-                print ('不要給小於1的數字啊')
+                sys.stderr.write(u'不要給小於1的數字啊\n')
             else:
                 self.timeUp = int(self.timeUp)
                 break
@@ -103,7 +103,7 @@ class ILoveNikukyu(object):
             else:
                 return True
         except Exception as inst:
-            print ('發生一些錯誤, 請提供log檔')
+            sys.stderr.write(u'發生一些錯誤, 請提供log檔\n')
             self.logger.error('Error occured while readConfig ...')
             self.logger.error(type(inst))
             self.logger.error(inst.args)
@@ -114,9 +114,9 @@ class ILoveNikukyu(object):
     
     def processHey(self):
         start_time = time.time()
-        print ('現在時間 %s ' % time.ctime(start_time))
+        sys.stderr.write(u'現在時間 %s \n' % time.ctime(start_time))
         end_time = start_time + 60 * self.timeUp
-        print ('結束時間 %s ' % time.ctime(end_time))
+        sys.stderr.write(u'結束時間 %s \n' % time.ctime(end_time))
         now = start_time
 
         auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
@@ -132,18 +132,18 @@ class ILoveNikukyu(object):
                 api.update_status(status=text)
                 pass_time = random.uniform(1, 10)
                 now = now + pass_time
-                print ('已於 %s 發twitter' % time.ctime(now))
+                sys.stderr.write(u'已於 %s 發twitter\n' % time.ctime(now))
                 count = count + 1
                 time.sleep(pass_time)
             except Exception as inst:
-                print ('發生一些錯誤, 請提供log檔')
+                sys.stderr.write(u'發生一些錯誤, 請提供log檔\n')
                 self.logger.error('Error occured while processHey ...')
                 self.logger.error(type(inst))
                 self.logger.error(inst.args)
                 self.logger.error('------')
                 break
         
-        print ("End! 這段期間您貢獻了 %d 張票!" % count)
+        sys.stderr.write(u"End! 這段期間您貢獻了 %d 張票!\n" % count)
         
 def process():
     nikukyu = ILoveNikukyu()
@@ -154,7 +154,7 @@ def process():
             nikukyu.defineTimeUp()
             nikukyu.processHey()
     else:
-        print "讀配置檔發生問題!"
+        sys.stderr.write(u"讀配置檔發生問題!\n")
     
 if __name__ == '__main__':
     process()

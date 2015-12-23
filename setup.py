@@ -1,14 +1,15 @@
 from distutils.core import setup
-import tweepy
-import py2exe
-import sys
-import imp
-
-
+import py2exe, sys
 sys.argv.append('py2exe')
+includes = ["tweepy"]
 
 setup(
-    windows = [{"script": "TwitterVoter.py"}],
-    options = {"py2exe":{"includes": ["tweepy"]}}
-    )
+    console = [{"script": "C:\TwitterVoter.py"}],
+    zipfile = None,
+    options = {
+        "py2exe":{
+            "includes": includes
+        }
+    }
+)
 
