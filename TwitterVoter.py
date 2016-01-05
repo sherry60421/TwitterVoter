@@ -59,13 +59,13 @@ class ILoveNikukyu(object):
     def initDescription(self):
         sys.stderr.write(u"Let's Joy~\n")
         sys.stderr.write(u"這支程式為避免被發現是機器人(我也不知道怎麼樣可以發現)\n")
-        sys.stderr.write(u"所以發推的頻率不固定, 大概會在1~10秒之間\n")
+        sys.stderr.write(u"所以發推的頻率不固定, 大概會在5~15秒之間\n")
         sys.stderr.write(u"請勿外流啊啊啊\n")
         sys.stderr.write(u"另外, 姐會寫code就是任性<(￣︶￣)>\n")
         sys.stderr.write(u"已經寫死發推內容了, 只准你給我投黨首大人啊!!!\n")
         sys.stderr.write(u"請確認看過使用教學再用,我沒有多餘時間做太多例外處理QQ\n")
         sys.stderr.write(u"教學: https://sherry60421.gitbooks.io/voter/content/ \n")
-        sys.stderr.write(u"目前版本: v1.1 \n")
+        sys.stderr.write(u"目前版本: v1.2 \n")
         sys.stderr.write("\n")
         sys.stderr.write("--------------------------------------------\n")
         sys.stderr.write("\n")
@@ -131,8 +131,8 @@ class ILoveNikukyu(object):
                 suffix = self.getRandomEmotion()
                 text = STATUS + suffix
                 api.update_status(status=text)
-                pass_time = random.uniform(1, 10)
-                now = now + pass_time
+                pass_time = random.uniform(5, 15)
+                now = time.time()
                 sys.stderr.write(u'已於 %s 發出tweet\n' % time.ctime(now))
                 count = count + 1
                 time.sleep(pass_time)
